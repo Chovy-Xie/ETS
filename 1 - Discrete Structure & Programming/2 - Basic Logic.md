@@ -81,12 +81,43 @@
 	- "For all real numbers x, x^2 is non-negative"
 
 - Programming (Loop Condition)
-> all_positive = all(x > 0 for x in numbers)  # checks if all elements in numbers are positive
+```
+// checks if all elements in numbers are positive
+all_positive = all(x > 0 for x in numbers)
+```
 
 - Negation of ∀ (Using De Morgan's Law): ¬(∀x ∈ D, P(x)) ≡ ∃x ∈ D, ¬P(x)
-	- This means "it's not true that P(x) holds for all x" is the same as saying "There exists some s for which P(x) is false"
+	- This means "it's not true that P(x) holds for all x" is the same as saying "there exists some s for which P(x) is false"
 
 ### Existential Quantifier (∃) - "There exists"
 > ∃ expresses that there is at least one element in the domain for which the statement is true 
 
-- Notation: 
+- Notation: ∃x ∈ D, P(x)
+	- Reads as "there exists an x in domain D such that P(x) holds"
+
+- Mathematics Examples: ∃x ∈ Z, x^2 = 9
+	- "There exists an integer x such that x^2 is equal to 9 (i.e., x = 3 or x = -3)
+
+- Programming 
+```
+// checks if there is at least one negative number in the list
+has_negative = any(x < 0 for x in numbers)
+```
+
+- Negation of ∃ (Using De Morgan's Law): ¬(∃x ∈ D, P(x)) ≡ ∀x ∈ D, ¬P(x)
+	- Meaning: "it's not true that some x satisfies P(x)" is the same as "for all x, P(x) is false"
+
+### Quantifier Interactions & Logical Equivalences
+
+- Implication with Quantifiers: ∀x, P(x) → Q(x) ≡ ∀x, ¬P(x) ∨ Q(x)
+	- ∀x ∈ Z, (x is even → x is divisible by 2)
+	- e.g., "if a number is even, then it's divisible by 2"
+
+- Mixing ∀ and ∃: Order Matters!
+	- ∀x∃y, P(x, y) != ∃y∀x, P(x, y)
+	- e.g., "for every student, there exists a book they like" (Different books for different students)
+	- e.g., "there exists one book that every students likes" (One specific book liked by all)
+
+	- Common Mistakes in Negations
+		- Incorrect: ¬(∀x, P(x)) = ∀x, ¬P(x)
+		- Correct: ¬(∀x, P(x)) = ∃x, ¬P(x)
